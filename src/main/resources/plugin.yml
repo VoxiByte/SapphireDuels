@@ -1,0 +1,7 @@
+name: SapphireDuels
+version: '${version}'
+main: dev.staticabuser.sapphireduels.SapphireDuels
+api-version: '1.20'
+commands:
+  duel:
+

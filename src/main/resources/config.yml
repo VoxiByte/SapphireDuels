@@ -1,0 +1,25 @@
+arenas:
+  0:
+    world: "world"
+    locations:
+      1:
+        x: 1
+        y: 2
+        z: 3
+      2:
+        x: 4
+        y: 5
+        z: 6
+messages:
+  sent-request: "§eYou sent a duel request to [player] successfully." # Used
+  refused-request: "§eYou refused [player]'s duel request successfully." # To use
+  request-accepted: "§eYou accepted [player]'s duel request successfully." # Used
+  request-received: "§eYou received a duel request from [player]." # Used
+  player-request-accepted: "§e[player] accepted your duel request." # Used
+  player-request-refused: "§c[player] refused your duel request." # To use
+  player-null: "§cThat player is offline or doesn't exist!" # Used
+  player-myself: "§cYou can't send a duel request to yourself!" # Used
+  request-already-sent: "§cYou already sent a duel request to that player!" # Used
+  no-duel-request: "§cYou don't have a duel request from that player!" # Used
+  win-message: "§aCongratulations! §eYou won!"
+  lose-message: "§cOh no, you lost! §eBetter luck next time!"
