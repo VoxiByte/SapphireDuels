@@ -15,6 +15,7 @@ public class DuelLoseEvent implements Listener {
     }
     @EventHandler
     public void onDuelLose(PlayerDuelLoseEvent event) {
+        plugin.getDatabase().addPlayerDuelLoss(event.getPlayer());
         event.getPlayer().sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.lose-message")));
     }
 }

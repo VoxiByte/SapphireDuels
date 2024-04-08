@@ -4,6 +4,7 @@ import dev.staticabuser.sapphireduels.SapphireDuels;
 import dev.staticabuser.sapphireduels.enums.ArenaState;
 import dev.staticabuser.sapphireduels.models.Arena;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
@@ -25,14 +26,16 @@ public class ArenaHandler {
         assert arenaSection != null;
         arenaSection.getKeys(false).forEach(arenaId -> {
             System.out.println(plugin.getConfig().getString("arenas." + arenaId + "world"));
+            World world = Bukkit.getWorld(Objects.requireNonNull(plugin.getConfig().getString("arenas." + arenaId + ".world")));
+            world.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
             Location arenaLocationA = new Location(
-                    Bukkit.getWorld(Objects.requireNonNull(plugin.getConfig().getString("arenas." + arenaId + ".world"))),
+                    world,
                     plugin.getConfig().getDouble("arenas." + arenaId + ".locations.1.x"),
                     plugin.getConfig().getDouble("arenas." + arenaId + ".locations.1.y"),
                     plugin.getConfig().getDouble("arenas." + arenaId + ".locations.1.z")
             );
             Location arenaLocationB = new Location(
-                    Bukkit.getWorld(Objects.requireNonNull(plugin.getConfig().getString("arenas." + arenaId + ".world"))),
+                    world,
                     plugin.getConfig().getDouble("arenas." + arenaId + ".locations.2.x"),
                     plugin.getConfig().getDouble("arenas." + arenaId + ".locations.2.y"),
                     plugin.getConfig().getDouble("arenas." + arenaId + ".locations.2.z")

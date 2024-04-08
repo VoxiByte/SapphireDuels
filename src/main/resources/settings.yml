@@ -1,0 +1,6 @@
+port: 3306
+host: "localhost"
+database: "test"
+table: "players"
+username: "root"
+password: ""

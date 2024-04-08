@@ -1,0 +1,10 @@
+kits:
+  0:
+    name: "AlbertoKit"
+    # Display Item format: material:amount:displayname (eg. diamond_chestplate:1:TestName)
+    display_item: "diamond_chestplate:1"
+    display_lore:
+      - ""
+    # Items format: material:amount
+    items:
+      - "diamond:1"

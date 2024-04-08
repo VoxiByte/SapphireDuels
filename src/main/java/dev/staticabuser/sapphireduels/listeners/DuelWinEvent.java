@@ -2,10 +2,15 @@ package dev.staticabuser.sapphireduels.listeners;
 
 import dev.staticabuser.sapphireduels.SapphireDuels;
 import dev.staticabuser.sapphireduels.events.PlayerDuelWinEvent;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DuelWinEvent implements Listener {
     private final SapphireDuels plugin;
@@ -14,6 +19,22 @@ public class DuelWinEvent implements Listener {
     }
     @EventHandler
     public void onDuelWin(PlayerDuelWinEvent event) {
+        plugin.getDatabase().addPlayerDuelWin(event.getPlayer());
         event.getPlayer().sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.win-message")));
+        List<String> winRewards = plugin.getConfig().getStringList("rewards");
+        winRewards.forEach(reward -> {
+            Pattern pattern = Pattern.compile("\\[([^]]+)\\] \\(([^)]+)\\)");
+            Matcher matcher = pattern.matcher(reward);
+            while (matcher.find()) {
+                String rewardType = matcher.group(1);
+                if (rewardType.equals("ITEM")) {
+                    String itemReward = matcher.group(2);
+                    Material rewardMaterial = Material.matchMaterial(itemReward.split(":")[0]);
+                    int amount = Integer.parseInt(itemReward.split(":")[1]);
+                    ItemStack itemStack = new ItemStack(rewardMaterial, amount);
+                    event.getPlayer().getInventory().addItem(itemStack);
+                }
+            }
+        });
     }
 }
