@@ -82,10 +82,9 @@ public class Duel {
             removePlayerLastLocations();
             loadPlayerInventories();
             removePlayerInventories();
+            Bukkit.getPluginManager().callEvent(new PlayerDuelWinEvent(duelWinner));
+            Bukkit.getPluginManager().callEvent(new PlayerDuelLoseEvent(duelLoser));
         }, 100);
-        Bukkit.getPluginManager().callEvent(new PlayerDuelWinEvent(duelWinner));
-        Bukkit.getPluginManager().callEvent(new PlayerDuelLoseEvent(duelLoser));
-
     }
     private void savePlayerInventories() {
         for (Player player : players) {

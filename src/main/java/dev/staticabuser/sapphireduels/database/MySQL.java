@@ -95,9 +95,6 @@ public class MySQL {
 
         if (topPlayerUuid == null) {
             System.out.println("No players found with the highest " + category + ".");
-        } else {
-            System.out.println("Player with the highest " + category + ":");
-            System.out.println(topPlayerUuid);
         }
         System.out.println(Bukkit.getOfflinePlayer(UUID.fromString(topPlayerUuid)).getName());
         return Bukkit.getOfflinePlayer(UUID.fromString(topPlayerUuid)).getName();

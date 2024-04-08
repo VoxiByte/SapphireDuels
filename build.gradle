@@ -47,7 +47,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 tasks.shadowJar {
     minimize()
-    destinationDirectory.set(file("C:/Users/dev/Desktop/General/Localhost/plugins"))
+    destinationDirectory.set(file("C:/Users/allen/Desktop/General/Localhost/plugins"))
 }
 processResources {
     def props = [version: version]

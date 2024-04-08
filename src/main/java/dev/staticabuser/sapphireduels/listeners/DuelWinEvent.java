@@ -21,7 +21,7 @@ public class DuelWinEvent implements Listener {
     public void onDuelWin(PlayerDuelWinEvent event) {
         plugin.getDatabase().addPlayerDuelWin(event.getPlayer());
         event.getPlayer().sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.win-message")));
-        List<String> winRewards = plugin.getConfig().getStringList("rewards");
+        List<String> winRewards = plugin.getConfig().getStringList("duel-rewards");
         winRewards.forEach(reward -> {
             Pattern pattern = Pattern.compile("\\[([^]]+)\\] \\(([^)]+)\\)");
             Matcher matcher = pattern.matcher(reward);
