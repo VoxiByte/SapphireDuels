@@ -34,7 +34,8 @@ public class TopWins extends PlaceholderExpansion {
     @Override
     public @Nullable String onRequest(OfflinePlayer offlinePlayer, @NotNull String params) {
         try {
-            return plugin.getDatabase().getTopPlayer("wins");
+            int position = Integer.parseInt(params);
+            return plugin.getDatabase().getTopPlayer("wins",position);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

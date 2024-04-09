@@ -2,6 +2,7 @@ package dev.staticabuser.sapphireduels.hooks;
 
 import dev.staticabuser.sapphireduels.SapphireDuels;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,9 +32,10 @@ public class TopLosses extends PlaceholderExpansion {
     }
 
     @Override
-    public @Nullable String onPlaceholderRequest(Player player, @NotNull String params) {
+    public @Nullable String onRequest(OfflinePlayer offlinePlayer, @NotNull String params) {
         try {
-            return plugin.getDatabase().getTopPlayer("losses");
+            int position = Integer.parseInt(params);
+            return plugin.getDatabase().getTopPlayer("losses",position);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

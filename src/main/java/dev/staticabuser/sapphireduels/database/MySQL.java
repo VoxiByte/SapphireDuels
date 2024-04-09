@@ -79,9 +79,13 @@ public class MySQL {
             System.err.println("Error updating player duels: " + e.getMessage());
         }
     }
-    public String getTopPlayer(String category) throws SQLException {
+    public String getTopPlayer(String category, int position) throws SQLException {
+        int playerPosition = position - 1;
+        /* Old one:
         String query = "SELECT uuid FROM " + getTable() + " WHERE " + category + " > 0" +
-                " AND " + category + " = (SELECT MAX(" + category + ") FROM " + getTable() + " WHERE " + category + " IS NOT NULL);";
+        " AND " + category + " = (SELECT MAX(" + category + ") FROM " + getTable() + " WHERE " + category + " IS NOT NULL);";
+        */
+        String query = "SELECT * FROM " + getTable() + " ORDER BY " + category + " DESC LIMIT 1 OFFSET " + playerPosition + ";";
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery(query);
 
@@ -96,7 +100,10 @@ public class MySQL {
         if (topPlayerUuid == null) {
             System.out.println("No players found with the highest " + category + ".");
         }
-        System.out.println(Bukkit.getOfflinePlayer(UUID.fromString(topPlayerUuid)).getName());
         return Bukkit.getOfflinePlayer(UUID.fromString(topPlayerUuid)).getName();
     }
+    /*
+    offset = position - 1
+    SELECT * FROM table ORDER BY category LIMIT 1 OFFSET offset
+     */
 }
