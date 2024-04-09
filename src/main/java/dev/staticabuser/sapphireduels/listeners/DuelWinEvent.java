@@ -8,7 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +19,6 @@ public class DuelWinEvent implements Listener {
     @EventHandler
     public void onDuelWin(PlayerDuelWinEvent event) {
         plugin.getDatabase().addPlayerDuelWin(event.getPlayer());
-        event.getPlayer().sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.win-message")));
         List<String> winRewards = plugin.getConfig().getStringList("duel-rewards");
         winRewards.forEach(reward -> {
             Pattern pattern = Pattern.compile("\\[([^]]+)\\] \\(([^)]+)\\)");

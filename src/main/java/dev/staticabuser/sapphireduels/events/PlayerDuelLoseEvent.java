@@ -7,7 +7,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class PlayerDuelLoseEvent extends Event {
     private Player player;
-    private static final HandlerList HANDLERS = new HandlerList();
+    private static final HandlerList handlers = new HandlerList();
+    public Player getPlayer() { return player; }
 
     public PlayerDuelLoseEvent(Player player) {
         this.player = player;
@@ -15,13 +16,10 @@ public class PlayerDuelLoseEvent extends Event {
 
     @Override
     public @NotNull HandlerList getHandlers() {
-        return HANDLERS;
+        return handlers;
     }
     public static HandlerList getHandlerList() {
-        return HANDLERS;
+        return handlers;
     }
 
-    public Player getPlayer() {
-        return player;
-    }
 }

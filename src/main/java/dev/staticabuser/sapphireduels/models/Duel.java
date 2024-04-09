@@ -75,6 +75,8 @@ public class Duel {
         plugin.getDuelHandler().getDuelList().remove(this);
         removeDuelRequests(duelWinner, duelLoser);
         clearPlayerInventories();
+        duelWinner.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.win-message")));
+        duelLoser.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.lose-message")));
         sendMessage(plugin.getConfig().getString("messages.teleport-message"));
         Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
             duelistOne.teleport(plugin.getLastLocationHandler().getLastPlayerLocation(duelistOne));

@@ -41,6 +41,7 @@ public class TopDuels extends PlaceholderExpansion {
     @Override
     public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {
         try {
+            // int position = Integer.parseInt(params);
             return plugin.getDatabase().getTopPlayer("duels");
         } catch (SQLException e) {
             throw new RuntimeException(e);
