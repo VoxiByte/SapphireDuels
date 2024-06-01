@@ -12,6 +12,7 @@ public class DuelLoseEvent implements Listener {
     public DuelLoseEvent(SapphireDuels plugin) {
         this.plugin = plugin;
     }
+
     @EventHandler
     public void onDuelLose(PlayerDuelLoseEvent event) {
         plugin.getDatabase().addPlayerDuelLoss(event.getPlayer());

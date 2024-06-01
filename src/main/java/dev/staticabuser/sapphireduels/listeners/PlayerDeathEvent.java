@@ -9,9 +9,11 @@ import org.bukkit.event.entity.EntityDeathEvent;
 
 public class PlayerDeathEvent implements Listener {
     private final SapphireDuels plugin;
+
     public PlayerDeathEvent(SapphireDuels plugin) {
         this.plugin = plugin;
     }
+
     @EventHandler
     public void onPlayerDeath(EntityDeathEvent event) {
         if (event.getEntity() instanceof Player player) {

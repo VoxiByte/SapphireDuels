@@ -4,9 +4,9 @@ import dev.staticabuser.sapphireduels.enums.ArenaState;
 import org.bukkit.Location;
 
 public class Arena {
-    private Location firstSpawn;
-    private Location secondSpawn;
-    private int id;
+    private final Location firstSpawn;
+    private final Location secondSpawn;
+    private final int id;
     private ArenaState arenaState;
 
     public Arena(Location firstSpawn, Location secondSpawn, int id, ArenaState arenaState) {

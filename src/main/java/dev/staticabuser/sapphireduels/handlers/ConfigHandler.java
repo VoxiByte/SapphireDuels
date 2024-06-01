@@ -16,7 +16,7 @@ public class ConfigHandler {
     }
 
     public YamlConfiguration initConfig(String name) {
-        File file = new File(plugin.getDataFolder(),name);
+        File file = new File(plugin.getDataFolder(), name);
 
         if (!file.exists()) {
             plugin.saveResource(name, true);

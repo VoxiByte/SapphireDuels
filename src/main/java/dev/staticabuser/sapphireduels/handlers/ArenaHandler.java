@@ -16,6 +16,7 @@ import java.util.Objects;
 public class ArenaHandler {
     private final List<Arena> arenas = new ArrayList<>();
     private final SapphireDuels plugin;
+
     public ArenaHandler(SapphireDuels plugin) {
         this.plugin = plugin;
         loadArenas();
@@ -41,11 +42,12 @@ public class ArenaHandler {
                     plugin.getConfig().getDouble("arenas." + arenaId + ".locations.2.z")
             );
             Arena arena = new Arena(
-                arenaLocationA, arenaLocationB, Integer.parseInt(arenaId), ArenaState.AVAILABLE
+                    arenaLocationA, arenaLocationB, Integer.parseInt(arenaId), ArenaState.AVAILABLE
             );
             arenas.add(arena);
         });
     }
+
     public Arena getFirstAvailableArena() {
         for (Arena arena : arenas) {
             if (arena.getArenaState() == ArenaState.AVAILABLE) {
@@ -54,6 +56,7 @@ public class ArenaHandler {
         }
         return null;
     }
+
     public List<Arena> getArenas() {
         return arenas;
     }

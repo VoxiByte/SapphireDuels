@@ -8,8 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Kit {
-    private ItemStack display;
-    private List<ItemStack> items;
+    private final ItemStack display;
+    private final List<ItemStack> items;
+
     public Kit(ItemStack display, List<ItemStack> items) {
         this.display = display;
         this.items = items;

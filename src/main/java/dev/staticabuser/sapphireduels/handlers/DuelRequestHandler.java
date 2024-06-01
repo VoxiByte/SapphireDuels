@@ -9,8 +9,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class DuelRequestHandler {
-    private SapphireDuels plugin;
-    private HashMap<UUID, List<UUID>> duelRequests = new HashMap<>();
+    private final SapphireDuels plugin;
+    private final HashMap<UUID, List<UUID>> duelRequests = new HashMap<>();
 
     public DuelRequestHandler(SapphireDuels plugin) {
         this.plugin = plugin;
@@ -19,21 +19,13 @@ public class DuelRequestHandler {
     public boolean playerHasRequestFrom(UUID playerUuid, UUID from) {
         List<UUID> playerDuelRequests = duelRequests.get(playerUuid);
 
-        if (playerDuelRequests.contains(from)) {
-            return true;
-        }
-
-        return false;
+        return playerDuelRequests.contains(from);
     }
 
     public boolean playerSentRequestTo(UUID playerUuid, UUID to) {
         List<UUID> playerDuelRequests = duelRequests.get(to);
 
-        if (playerDuelRequests.contains(playerUuid)) {
-            return true;
-        }
-
-        return false;
+        return playerDuelRequests.contains(playerUuid);
     }
 
     public HashMap<UUID, List<UUID>> getDuelRequests() {

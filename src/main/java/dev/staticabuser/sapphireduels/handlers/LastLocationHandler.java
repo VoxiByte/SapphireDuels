@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class LastLocationHandler {
-    private HashMap<UUID, Location> lastLocations = new HashMap<>();
+    private final HashMap<UUID, Location> lastLocations = new HashMap<>();
 
     public void saveLastPlayerLocation(Player player) {
         Location location = player.getLocation();

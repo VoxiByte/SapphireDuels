@@ -6,9 +6,12 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerDuelLoseEvent extends Event {
-    private Player player;
+    private final Player player;
     private static final HandlerList handlers = new HandlerList();
-    public Player getPlayer() { return player; }
+
+    public Player getPlayer() {
+        return player;
+    }
 
     public PlayerDuelLoseEvent(Player player) {
         this.player = player;
@@ -18,6 +21,7 @@ public class PlayerDuelLoseEvent extends Event {
     public @NotNull HandlerList getHandlers() {
         return handlers;
     }
+
     public static HandlerList getHandlerList() {
         return handlers;
     }

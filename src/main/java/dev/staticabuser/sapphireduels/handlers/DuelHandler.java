@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DuelHandler {
-    private SapphireDuels plugin;
+    private final SapphireDuels plugin;
     private final List<Duel> duelList = new ArrayList<>();
 
     public DuelHandler(SapphireDuels plugin) {

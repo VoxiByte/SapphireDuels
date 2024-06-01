@@ -13,9 +13,11 @@ import java.util.regex.Pattern;
 
 public class DuelWinEvent implements Listener {
     private final SapphireDuels plugin;
+
     public DuelWinEvent(SapphireDuels plugin) {
         this.plugin = plugin;
     }
+
     @EventHandler
     public void onDuelWin(PlayerDuelWinEvent event) {
         plugin.getDatabase().addPlayerDuelWin(event.getPlayer());

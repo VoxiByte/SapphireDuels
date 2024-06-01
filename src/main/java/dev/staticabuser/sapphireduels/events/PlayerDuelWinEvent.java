@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerDuelWinEvent extends Event {
-    private Player player;
+    private final Player player;
     private static final HandlerList HANDLERS = new HandlerList();
     public PlayerDuelWinEvent(Player player) {
         this.player = player;

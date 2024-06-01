@@ -11,9 +11,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.java.JavaPlugin;
+
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.logging.Level;
+
 public final class SapphireDuels extends JavaPlugin {
     private DuelHandler duelHandler;
     private DuelRequestHandler duelRequestHandler;
@@ -23,6 +25,7 @@ public final class SapphireDuels extends JavaPlugin {
     private LastLocationHandler lastLocationHandler;
     private KitsHandler kitsHandler;
     private MySQL database;
+
     @Override
     public void onEnable() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
@@ -34,10 +37,10 @@ public final class SapphireDuels extends JavaPlugin {
             new TopLosses(this).register();
 
             getServer().getPluginManager().registerEvents(new ConnectionEvents(this), this);
-            getServer().getPluginManager().registerEvents(new PlayerDeathEvent(this),this);
+            getServer().getPluginManager().registerEvents(new PlayerDeathEvent(this), this);
             getServer().getPluginManager().registerEvents(new DuelLoseEvent(this), this);
-            getServer().getPluginManager().registerEvents(new DuelWinEvent(this),this);
-            getServer().getPluginManager().registerEvents(new InventoryInteractionEvent(this),this);
+            getServer().getPluginManager().registerEvents(new DuelWinEvent(this), this);
+            getServer().getPluginManager().registerEvents(new InventoryInteractionEvent(this), this);
 
             loadCommand("duel", new DuelCommand(this), new DuelCommand(this));
 
@@ -62,7 +65,7 @@ public final class SapphireDuels extends JavaPlugin {
                 throw new RuntimeException(e);
             }
         } else {
-            getLogger().log(Level.WARNING,"Could not find PlaceholderAPI! This plugin is required.");
+            getLogger().log(Level.WARNING, "Could not find PlaceholderAPI! This plugin is required.");
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
@@ -101,9 +104,13 @@ public final class SapphireDuels extends JavaPlugin {
         return configHandler;
     }
 
-    public InventoryHandler getInventoryHandler() { return inventoryHandler; }
+    public InventoryHandler getInventoryHandler() {
+        return inventoryHandler;
+    }
 
-    public LastLocationHandler getLastLocationHandler() { return lastLocationHandler; }
+    public LastLocationHandler getLastLocationHandler() {
+        return lastLocationHandler;
+    }
 
     public MySQL getDatabase() {
         return database;

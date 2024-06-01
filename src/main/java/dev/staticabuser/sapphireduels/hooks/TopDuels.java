@@ -29,6 +29,7 @@ public class TopDuels extends PlaceholderExpansion {
     public @NotNull String getVersion() {
         return "1.0.0";
     }
+
     @Override
     public boolean canRegister() {
         return true;
@@ -38,6 +39,7 @@ public class TopDuels extends PlaceholderExpansion {
     public boolean persist() {
         return true;
     }
+
     @Override
     public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {
         try {

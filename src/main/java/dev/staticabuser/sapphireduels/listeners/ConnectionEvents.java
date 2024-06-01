@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class ConnectionEvents implements Listener {
-    private SapphireDuels plugin;
+    private final SapphireDuels plugin;
 
     public ConnectionEvents(SapphireDuels plugin) {
         this.plugin = plugin;
@@ -31,6 +31,7 @@ public class ConnectionEvents implements Listener {
             System.out.println("Added " + player.getName() + "'s request list.");
         }
     }
+
     @EventHandler
     public void onLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();

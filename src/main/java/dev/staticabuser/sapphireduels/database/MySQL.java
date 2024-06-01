@@ -7,13 +7,13 @@ import java.sql.*;
 import java.util.UUID;
 
 public class MySQL {
-    private Connection connection;
-    private int port;
-    private String host;
-    private String database;
-    private String table;
-    private String username;
-    private String password;
+    private final Connection connection;
+    private final int port;
+    private final String host;
+    private final String database;
+    private final String table;
+    private final String username;
+    private final String password;
 
     public MySQL(int port, String host, String database, String table, String username, String password) throws SQLException {
         this.port = port;

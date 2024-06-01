@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class DuelCommand implements CommandExecutor, TabCompleter {
-    private SapphireDuels plugin;
+    private final SapphireDuels plugin;
 
     public DuelCommand(SapphireDuels plugin) {
         this.plugin = plugin;
@@ -44,13 +44,13 @@ public class DuelCommand implements CommandExecutor, TabCompleter {
                         player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.request-already-sent")));
                     } else {
                         plugin.getDuelRequestHandler().sendRequest(player, enemy);
-                        player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.sent-request")).replace("[player]",enemy.getName()));
+                        player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.sent-request")).replace("[player]", enemy.getName()));
                     }
                     break;
                 case "accept":
                     if (plugin.getDuelRequestHandler().playerHasRequestFrom(player.getUniqueId(), enemy.getUniqueId())) {
                         plugin.getDuelHandler().createDuel(player, enemy);
-                        player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.request-accepted")).replace("[player]",enemy.getName()));
+                        player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.request-accepted")).replace("[player]", enemy.getName()));
                         enemy.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.player-request-accepted")).replace("[player]", player.getName()));
                     } else {
                         player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.no-duel-request")));
@@ -60,8 +60,8 @@ public class DuelCommand implements CommandExecutor, TabCompleter {
                 case "refuse":
                     if (plugin.getDuelRequestHandler().playerHasRequestFrom(player.getUniqueId(), enemy.getUniqueId())) {
                         plugin.getDuelRequestHandler().getDuelRequests().get(player.getUniqueId()).remove(enemy.getUniqueId());
-                        player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.refused-request").replace("[player]",enemy.getName())));
-                        enemy.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.player-request-refused").replace("[player]",player.getName())));
+                        player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.refused-request").replace("[player]", enemy.getName())));
+                        enemy.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.player-request-refused").replace("[player]", player.getName())));
                     } else {
                         player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.no-duel-request")));
                         return true;
@@ -75,6 +75,7 @@ public class DuelCommand implements CommandExecutor, TabCompleter {
         return true;
 
     }
+
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         List<String> results = new ArrayList<>();
